@@ -28,3 +28,9 @@ THE NYCSS is an API based the subway stations from New York.
 - Age
 - Photo
 - Stations
+
+## Technical:
+
+### Architecture
+
+![NYCSS Architecture](architecture.png)
