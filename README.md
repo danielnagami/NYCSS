@@ -1,8 +1,8 @@
-# NYCSS (NYC Subway Stations)
+# NYCSS (NYC Subway Stations) 🗽🚇
 
 THE NYCSS is an API based the subway stations from New York.
 
-## Features:
+## ✨ Features:
 
 ### Subway stations list
 
@@ -14,7 +14,7 @@ THE NYCSS is an API based the subway stations from New York.
 - Street
 - Photo
 
-### User's profile
+### 👤 User's profile
 
 #### User's more frequent stations
 
@@ -29,7 +29,7 @@ THE NYCSS is an API based the subway stations from New York.
 - Photo
 - Stations
 
-## Technical:
+## ⚙ Technical:
 
 ### Architecture
 
