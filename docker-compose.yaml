@@ -1,0 +1,29 @@
+services:
+
+  nycss-rabbitmq:
+    image: "rabbitmq:3.10.7-management-alpine"
+    container_name: nycss-rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      app-network:
+
+  nycss-sqlserver:
+    container_name: nycss-sqlserver
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "P4ssw0rd@123"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "1435:1433"
+    networks:
+      app-network:
+
+
+networks:
+  app-network:
+    driver: bridge
