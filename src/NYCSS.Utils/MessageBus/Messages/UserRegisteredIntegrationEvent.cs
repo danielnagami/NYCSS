@@ -1,4 +1,4 @@
-﻿namespace NYCSS.AuthApi.Models.Messages
+﻿namespace NYCSS.Utils.MessageBus.Messages
 {
     public class UserRegisteredIntegrationEvent : IntegrationEvent
     {

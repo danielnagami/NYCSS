@@ -1,6 +1,8 @@
-﻿namespace NYCSS.Domain.Entities
+﻿using NYCSS.Utils.DomainObjects;
+
+namespace NYCSS.Domain.Entities
 {
-    public class User : Entity
+    public class User : Entity, IAggregateRoot
     {
         public string Username { get; set; } = string.Empty;
         public string FirstName { get; set; } = string.Empty;

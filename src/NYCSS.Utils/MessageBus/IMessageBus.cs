@@ -1,9 +1,9 @@
 ﻿using EasyNetQ;
 using EasyNetQ.Internals;
 
-using NYCSS.AuthApi.Models.Messages;
+using NYCSS.Utils.MessageBus.Messages;
 
-namespace NYCSS.AuthApi.Interfaces
+namespace NYCSS.Utils.MessageBus
 {
     public interface IMessageBus
     {

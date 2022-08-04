@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace NYCSS.AuthApi.Models.Messages
+namespace NYCSS.Utils.MessageBus.Messages
 {
     public class ResponseMessage : Message
     {

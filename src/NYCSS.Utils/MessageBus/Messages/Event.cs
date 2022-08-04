@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace NYCSS.AuthApi.Models.Messages
+namespace NYCSS.Utils.MessageBus.Messages
 {
     public class Event : Message, INotification
     {

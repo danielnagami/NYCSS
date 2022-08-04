@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NYCSS.Utils\NYCSS.Utils.csproj" />
+  </ItemGroup>
+
 </Project>

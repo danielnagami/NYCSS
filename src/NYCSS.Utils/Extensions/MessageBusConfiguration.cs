@@ -1,7 +1,8 @@
-﻿using NYCSS.AuthApi.Interfaces;
-using NYCSS.AuthApi.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace NYCSS.AuthApi.Configurations
+using NYCSS.Utils.MessageBus;
+
+namespace NYCSS.Utils.Extensions
 {
     public static class MessageBusConfiguration
     {
@@ -9,7 +10,7 @@ namespace NYCSS.AuthApi.Configurations
         {
             if (string.IsNullOrEmpty(connectionString)) throw new ArgumentNullException();
 
-            services.AddSingleton<IMessageBus>(new MessageBus(connectionString));
+            services.AddSingleton<IMessageBus>(new MessageBus.MessageBus(connectionString));
 
             return services;
         }

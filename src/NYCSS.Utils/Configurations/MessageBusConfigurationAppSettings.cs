@@ -1,4 +1,4 @@
-﻿namespace NYCSS.AuthApi.Configurations
+﻿namespace NYCSS.Utils.Configurations
 {
     public class MessageBusConfigurationAppSettings
     {

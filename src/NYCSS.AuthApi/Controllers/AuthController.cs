@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-using NYCSS.AuthApi.Interfaces;
 using NYCSS.AuthApi.Models;
-using NYCSS.AuthApi.Models.Messages;
 using NYCSS.Utils.Controllers;
 using NYCSS.Utils.Identity;
+using NYCSS.Utils.MessageBus;
+using NYCSS.Utils.MessageBus.Messages;
 
 using System.IdentityModel.Tokens.Jwt;
 

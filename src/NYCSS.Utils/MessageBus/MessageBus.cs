@@ -1,14 +1,13 @@
 ﻿using EasyNetQ;
 using EasyNetQ.Internals;
 
-using NYCSS.AuthApi.Interfaces;
-using NYCSS.AuthApi.Models.Messages;
+using NYCSS.Utils.MessageBus.Messages;
 
 using Polly;
 
 using RabbitMQ.Client.Exceptions;
 
-namespace NYCSS.AuthApi.Services
+namespace NYCSS.Utils.MessageBus
 {
     public class MessageBus : IMessageBus
     {
@@ -55,7 +54,14 @@ namespace NYCSS.AuthApi.Services
         {
             TryConnect();
 
-            return await _bus!.Rpc.RequestAsync<TRequest, TResponse>(request);
+            try
+            {
+                return await _bus!.Rpc.RequestAsync<TRequest, TResponse>(request);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public IDisposable Respond<TRequest, TResponse>(Func<TRequest, TResponse> reply)
