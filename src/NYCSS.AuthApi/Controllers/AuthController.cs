@@ -39,7 +39,7 @@ namespace NYCSS.AuthApi.Controllers
 
             var user = new IdentityUser
             {
-                UserName = userRegister.Email,
+                UserName = userRegister.Username,
                 Email = userRegister.Email,
                 EmailConfirmed = true
             };
@@ -72,11 +72,11 @@ namespace NYCSS.AuthApi.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var result = await _signInManager.PasswordSignInAsync(userLogin.Email, userLogin.Password, false, true);
+            var result = await _signInManager.PasswordSignInAsync(userLogin.Username, userLogin.Password, false, true);
 
             if (result.Succeeded)
             {
-                return CustomResponse(await GenerateJWT(userLogin.Email));
+                return CustomResponse(await GenerateJWT(userLogin.Username));
             }
 
             if (result.IsLockedOut)
@@ -89,9 +89,9 @@ namespace NYCSS.AuthApi.Controllers
             return CustomResponse();
         }
 
-        private async Task<UserLoginResponse> GenerateJWT(string email)
+        private async Task<UserLoginResponse> GenerateJWT(string username)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByNameAsync(username);
             var claims = await _userManager.GetClaimsAsync(user);
 
             var identityClaims = await GetUserClaims(claims, user);
@@ -105,6 +105,7 @@ namespace NYCSS.AuthApi.Controllers
             var userRoles = await _userManager.GetRolesAsync(user);
 
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
+            claims.Add(new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
@@ -124,7 +125,7 @@ namespace NYCSS.AuthApi.Controllers
         private string EncodeToken(ClaimsIdentity identityClaims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.UTF8.GetBytes(_appSettings.Secret);
 
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
@@ -157,7 +158,7 @@ namespace NYCSS.AuthApi.Controllers
 
         private async Task<ResponseMessage> RegisterClient(UserRegister userRegister)
         {
-            var usuario = await _userManager.FindByEmailAsync(userRegister.Email);
+            var usuario = await _userManager.FindByNameAsync(userRegister.Username);
 
             var userRegistered = new UserRegisteredIntegrationEvent(
                 Guid.Parse(usuario.Id), 

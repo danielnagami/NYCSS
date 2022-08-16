@@ -11,8 +11,8 @@ namespace NYCSS.Infra.SqlServer.Data
 {
     public class UsersContext : DbContext, IUnitOfWork
     {
-        private readonly IMediatorHandler _mediatorHandler;
-        public DbSet<User>? Users { get; set; }
+        private IMediatorHandler? _mediatorHandler;
+        public DbSet<User> Users { get; set; }
 
         public UsersContext(DbContextOptions<UsersContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
@@ -42,7 +42,6 @@ namespace NYCSS.Infra.SqlServer.Data
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UsersContext).Assembly);
         }
     }
 

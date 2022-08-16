@@ -1,7 +1,6 @@
 ﻿using FluentValidation.Results;
 
 using NYCSS.Utils.MessageBus.Messages;
-using NYCSS.Utils.MessagesBus.Messages;
 
 namespace NYCSS.Utils.Mediator
 {

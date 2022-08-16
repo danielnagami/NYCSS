@@ -4,7 +4,7 @@ namespace NYCSS.AuthApi.Configurations
 {
     public static class SwaggerConfiguration
     {
-        public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {

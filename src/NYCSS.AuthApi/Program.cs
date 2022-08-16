@@ -21,8 +21,8 @@ builder.Configuration.GetSection(JwtConfigurationAppSettings.KEY).Bind(jwtConfig
 services.AddSingleton<JwtConfigurationAppSettings>(jwtConfig);
 
 services.AddIdentityConfiguration(configuration);
-services.AddSwaggerConfiguration(configuration);
-services.AddMessageBus(configuration["MessageBus:ConnectionString"]);
+services.AddSwaggerConfiguration();
+services.AddMessageBus(configuration["RabbitMQ:ConnectionString"]);
 
 var app = builder.Build();
 

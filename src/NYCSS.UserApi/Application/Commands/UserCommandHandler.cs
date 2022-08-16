@@ -1,9 +1,10 @@
-﻿
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 
 using MediatR;
 
+using NYCSS.Domain.Entities;
 using NYCSS.Infra.SqlServer.Interfaces;
+using NYCSS.UserApi.Application.Events;
 using NYCSS.Utils.MessageBus.Messages;
 
 namespace NYCSS.UserApi.Application.Commands
@@ -17,21 +18,21 @@ namespace NYCSS.UserApi.Application.Commands
             _userRepository = userRepository;
         }
 
-        public Task<ValidationResult> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.Valid()) return request.ValidationResult;
-            var cliente = new Models.Cliente(message.Id, message.Nome, message.Email, message.Cpf);
-            var clienteExitente = await _clienteRepository.ObterPorCpf(cliente.Cpf.Numero);
+            var user = new User(request.ID, request.Username, request.FirstName, request.LastName, request.Email, request.Age, request.Photo);
+            var clienteExitente = await _userRepository.GetByUsername(request.Username);
             if (clienteExitente != null)
             {
-                AdicionarErro("Este CPF já está em uso.");
+                AddError("This username is already been used.");
                 return ValidationResult;
             }
 
-            _clienteRepository.Adicionar(cliente);
+            _userRepository.Add(user);
 
-            cliente.AdicionarEvento(new ClienteRegistradoEvent(message.Id, message.Nome, message.Email, message.Cpf));
-            return await PersistirDados(_clienteRepository.UnitOfWork);
+            user.AddEvent(new UserRegisteredEvent(request.ID, request.FirstName, request.FirstName, request.LastName, request.Email, request.Age, request.Photo));
+            return await PersistData(_userRepository.UnitOfWork);
         }
     }
 }

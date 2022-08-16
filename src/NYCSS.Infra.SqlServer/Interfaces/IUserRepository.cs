@@ -5,8 +5,9 @@ namespace NYCSS.Infra.SqlServer.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        void Adicionar(User cliente);
-        Task<IEnumerable<User>> ObterTodos();
-        Task<User> ObterPorCpf(string cpf);
+        void Add(User user);
+        Task<IEnumerable<User>> GetAll();
+        Task<User> GetByUsername(string username);
+        Task<User> GetById(Guid id);
     }
 }

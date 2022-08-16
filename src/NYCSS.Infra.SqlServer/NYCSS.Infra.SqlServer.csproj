@@ -26,4 +26,10 @@
 	  <ProjectReference Include="..\NYCSS.Utils\NYCSS.Utils.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

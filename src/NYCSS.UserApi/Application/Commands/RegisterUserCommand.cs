@@ -14,8 +14,9 @@ namespace NYCSS.UserApi.Application.Commands
         public int Age { get; set; }
         public string Photo { get; set; } = string.Empty;
 
-        public RegisterUserCommand(string username, string firstName, string lastName, string email, int age, string photo)
+        public RegisterUserCommand(Guid id, string username, string firstName, string lastName, string email, int age, string photo)
         {
+            ID = id;
             Username = username;
             FirstName = firstName;
             LastName = lastName;

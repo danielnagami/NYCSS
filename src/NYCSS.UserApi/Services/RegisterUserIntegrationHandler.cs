@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 
+using NYCSS.UserApi.Application.Commands;
 using NYCSS.Utils.Mediator;
 using NYCSS.Utils.MessageBus;
 using NYCSS.Utils.MessageBus.Messages;
@@ -19,7 +20,9 @@ namespace NYCSS.UserApi.Services
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            throw new NotImplementedException();
+            SetRespond();
+
+            return Task.CompletedTask;
         }
 
         private void SetRespond()
@@ -37,7 +40,7 @@ namespace NYCSS.UserApi.Services
 
         public async Task<ResponseMessage> RegisterUser(UserRegisteredIntegrationEvent message)
         {
-            var clienteCommand = new RegistrarClienteCommand(message.Id, message.Nome, message.Email, message.Cpf);
+            var clienteCommand = new RegisterUserCommand(message.ID, message.Username, message.FirstName, message.LastName, message.Email, message.Age, message.Photo);
 
             ValidationResult sucesso;
 

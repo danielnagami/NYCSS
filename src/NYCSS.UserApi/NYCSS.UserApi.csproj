@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,12 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NYCSS.Domain\NYCSS.Domain.csproj" />
+    <ProjectReference Include="..\NYCSS.Infra.MongoDB\NYCSS.Infra.MongoDB.csproj" />
     <ProjectReference Include="..\NYCSS.Infra.SqlServer\NYCSS.Infra.SqlServer.csproj" />
     <ProjectReference Include="..\NYCSS.Utils\NYCSS.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Application\Events\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.7" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
 </Project>

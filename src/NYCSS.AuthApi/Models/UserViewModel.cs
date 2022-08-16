@@ -34,8 +34,7 @@ namespace NYCSS.AuthApi.Models
     public class UserLogin
     {
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [EmailAddress(ErrorMessage = "The field {0} is in invalid format.")]
-        public string Email { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Password { get; set; } = string.Empty;

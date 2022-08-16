@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="GeoCoordinate" Version="2.0.1" />
+    <PackageReference Include="Geolocation" Version="1.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NYCSS.Infra.JsonReader\NYCSS.Infra.JsonReader.csproj" />
+    <ProjectReference Include="..\NYCSS.Infra.MongoDB\NYCSS.Infra.MongoDB.csproj" />
+    <ProjectReference Include="..\NYCSS.Utils\NYCSS.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
