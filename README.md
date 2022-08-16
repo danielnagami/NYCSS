@@ -6,19 +6,15 @@ THE NYCSS is an API based the subway stations from New York.
 
 ### Subway stations list
 
-//Ver o que é possível fazer com API de metrô ou com buscas no Google para detalhar a estação selecionada
-
 - ID
 - Name
 - Location
 - Street
-- Photo
+- Photo (WIP)
 
 ### 👤 User's profile
 
 #### User's more frequent stations
-
-//Inserir mais de uma estação e criar flag para contar quantas vezes o usuário esteve na estação. Resonse com array e query com parâmetro de quantidade
 
 #### User's profile details
 
@@ -26,7 +22,7 @@ THE NYCSS is an API based the subway stations from New York.
 - FirstName
 - LasName
 - Age
-- Photo
+- Photo (WIP)
 - Stations
 
 ## ⚙ Technical:
