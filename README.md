@@ -27,6 +27,29 @@ THE NYCSS is an API based the subway stations from New York.
 
 ## ⚙ Technical:
 
+### Endpoints
+
+#### Subway API
+
+api/subway
+
+> Retrieve a list of NYC Subway stations
+
+api/subway/distance
+
+> Calculate the distance between two user provided stations
+
+#### User API
+
+api/userfrequency/increase
+
+> Save a user’s frequently used stations
+
+api/userfrequency
+
+> Retrieve a user’s frequently used stations
+
+
 ### Architecture
 
 ![NYCSS Architecture](architecture.png)
